@@ -1,33 +1,18 @@
-# Cérebro RTG — Sala de Comando v0.3
+# Cérebro RTG — Sala de Comando v0.4
 
-Protótipo visual local premium para `cerebro.rtgengenharia.com`.
+Pacote estático local/read-only para demonstração controlada.
 
-## Avanços sobre v0.2
-
-- preserva v0.2 em pasta separada;
-- visual Jarvis mais forte;
-- modal do Centro de Controle com navegação real para seções;
-- dados em `mock-data.js`;
-- Empreendimento 360;
-- Arquivos/Entregáveis;
-- Fontes/Evidências;
-- KPIs do briefing;
-- decisões com impacto;
-- tecla `Esc` fecha modal;
-- clique fora fecha modal.
-
-## Guardrails
-
-- Sem dados reais;
-- sem deploy;
-- sem DNS;
-- sem produção;
-- sem credenciais;
-- sem escrita em sistemas oficiais;
-- sem envio externo.
+## Status
+- Protótipo visual: v0.4
+- Dados: mock/demonstrativos
+- Operação: somente leitura
+- Publicação: NÃO publicado em produção
 
 ## Abrir localmente
+Abra `index.html` no navegador.
 
-```bash
-xdg-open /root/rtg/rtggestao-agent/prototypes/cerebro-rtg-sala-comando-v03/index.html
-```
+## Limites de segurança
+- Não usar para decisão real.
+- Não usar para aceite de entrega.
+- Não altera RTGestao, RTGClock, Drive, ClickUp ou qualquer fonte oficial.
+- Interação por voz é local no navegador e tem fallback por texto.

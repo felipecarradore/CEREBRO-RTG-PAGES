@@ -1,63 +1,43 @@
-# Deploy plan — cerebro.rtgengenharia.com
+# Deploy plan — cerebro.rtgengenharia.com — v0.4
 
-## Pacote preparado
+## Autorização
+
+Felipe autorizou avançar com a publicação após o pacote local/read-only estar validado.
+
+## Pacote
 
 Origem:
+- `/root/rtg/rtggestao-agent/prototypes/cerebro-rtg-sala-comando-v04/`
 
-- `/root/rtg/rtggestao-agent/prototypes/cerebro-rtg-sala-comando-v03/`
+Dist:
+- `/root/rtg/rtggestao-agent/dist/cerebro-rtg-sala-comando-v04/`
 
-Pacote estático:
-
-- `/root/rtg/rtggestao-agent/dist/cerebro-rtg-sala-comando-v03/`
-
-Arquivos:
-
+Arquivos publicados:
 - `index.html`
 - `mock-data.js`
 - `README.md`
-- `CNAME` com `cerebro.rtgengenharia.com`
-
-## Validação local realizada
-
-- Página carregou no browser local.
-- `window.openControl` existe.
-- `window.closeControl` existe.
-- `#modal` existe.
-- `#moduleGrid` existe.
-- `window.RTG_MOCK_DATA.modules.length = 12`.
-- Botão principal abre modal com 12 módulos.
-- Botão central abre modal com 12 módulos.
-- `Esc` fecha modal.
-- Clique fora fecha modal.
-- Botão `X` fecha modal.
-
-## DNS / hospedagem observados
-
-- `cerebro.rtgengenharia.com` ainda não responde em DNS público.
-- DNS local resolve para localhost por configuração do ambiente, não usar como evidência pública.
-- `rtgestao.rtgengenharia.com` aponta para Cloudflare Pages (`rtgestao.pages.dev`).
-- `rtgarquivos.rtgengenharia.com`, `rtgclock.rtgengenharia.com` e `www.rtgengenharia.com` apontam para GitHub Pages (`felipecarradore.github.io`).
-- `rtgdiretoria.rtgengenharia.com` aponta para `custom-domains.chatgpt.site`.
+- `manifest.json`
+- `CNAME`
+- `DEPLOY_PLAN.md`
 
 ## Guardrails
 
-- Sem dados reais.
-- Sem deploy ainda.
-- Sem alteração DNS ainda.
-- Sem credenciais.
-- Sem sistema oficial.
-- Produção exige autorização explícita do Felipe.
+- Dados mock/demonstrativos.
+- Read-only.
+- Sem conexão com RTGestao, RTGClock, Drive, ClickUp ou fontes oficiais.
+- Não usar para decisão real, aceite de entrega ou cobrança operacional.
+- HTTPS enforcement só deve ser ativado quando o certificado do GitHub Pages estiver válido para `cerebro.rtgengenharia.com`.
 
-## Próximo caminho recomendado
+## Validação pré-publicação
 
-Opção mais simples para protótipo estático:
+- Browser local carregou sem erro JS.
+- Banner read-only visível.
+- Resíduos visuais antigos removidos.
+- ZIP e dist verificados.
+- DNS autoritativo já aponta `cerebro.rtgengenharia.com CNAME felipecarradore.github.io.`
 
-1. Criar/publicar um repositório GitHub Pages dedicado, por exemplo `CEREBRO-RTG-PAGES`.
-2. Publicar o pacote estático no branch principal.
-3. Configurar GitHub Pages.
-4. Criar CNAME `cerebro.rtgengenharia.com -> felipecarradore.github.io` no SystemDNS/OpenSRS.
-5. Validar HTTP/HTTPS público.
+## Validação pós-publicação esperada
 
-Alternativa se Felipe quiser seguir padrão do `rtgestao`:
-
-- Cloudflare Pages, mas somente com credencial/projeto explicitamente RTG e nunca Crown/CrownPDF/CrownServices.
+- `gh api repos/felipecarradore/CEREBRO-RTG-PAGES/pages` com `status=built`.
+- `curl http://cerebro.rtgengenharia.com/` contendo título v0.4.
+- `curl https://cerebro.rtgengenharia.com/` somente após certificado válido.

@@ -1,16 +1,16 @@
 window.RTG_MOCK_DATA = {
   meta: {
     product: 'Cérebro RTG — Sala de Comando',
-    version: 'v0.3-premium',
+    version: 'v0.4-local',
     dateLabel: '13/08/2026',
-    mode: 'Protótipo v0.3 — dados demonstrativos/read-only',
+    mode: 'Protótipo v0.4 — local/read-only',
     sources: ['RTGestão: mock', 'RTGClock: mock', 'RTGArquivos: futuro', 'Diretoria: futuro', 'Read-only']
   },
   briefing: {
     eyebrow: 'Conclusão do dia',
-    titleBefore: 'Felipe, a empresa precisa de',
-    titleHighlight: 'comando operacional',
-    titleAfter: 'agora.',
+    titleBefore: 'Comando executivo para',
+    titleHighlight: 'operação RTG',
+    titleAfter: 'com evidência e decisão.',
     summary: 'O Cérebro abre pelo estado, explica a causa, mostra impacto e força a próxima decisão.',
     text: 'Hoje o risco demonstrativo é controle operacional: foco de Torelli, rastreabilidade no RTGClock e vencidas críticas. A próxima melhor ação é travar a frente principal, limpar ruído e manter decisão registrada.',
     voice: 'Felipe, briefing demonstrativo. A empresa precisa de comando operacional agora. Recomendo validar foco em Torelli, checar RTGClock e limpar vencidas críticas antes que o ruído vire atraso real.'
@@ -31,6 +31,15 @@ window.RTG_MOCK_DATA = {
     {tag:'Tempo', tone:'yellow', title:'RTGClock', desc:'Horas por pessoa, projeto, etapa e disciplina.', target:'pessoa'},
     {tag:'Comercial', tone:'', title:'Funil', desc:'Prospecção, propostas, contratos e sinais.', target:'empreendimento'},
     {tag:'Fonte', tone:'green', title:'Evidências', desc:'Origem, qualidade, lacunas e última leitura dos dados.', target:'fontes'}
+  ],
+  areaStatus: [
+    {area:'Operação', status:'Atenção', owner:'Coordenação', fact:'Frente principal precisa de foco explícito.', action:'Travar prioridade do dia e dono de destravamento.', tone:'yellow'},
+    {area:'Projetos', status:'Em controle', owner:'PMO técnico', fact:'Etapas e gates precisam evidência antes de concluir.', action:'Abrir Projeto 360 por empreendimento crítico.', tone:'green'},
+    {area:'Pessoas', status:'Risco de rastreabilidade', owner:'Líderes', fact:'Capacidade sem RTGClock vinculado vira hipótese.', action:'Exigir pessoa + projeto + etapa + disciplina.', tone:'red'},
+    {area:'Arquivos', status:'Pendente de validação', owner:'RTGArquivos', fact:'Arquivo encontrado não é entrega validada.', action:'Conferir pacote esperado, revisão vigente e aceite.', tone:'yellow'},
+    {area:'Financeiro', status:'Leitura futura', owner:'IvonIA', fact:'Custos e fluxo entram como camada diretiva, não operacional viva nesta tela.', action:'Preparar conexão read-only quando autorizado.', tone:''},
+    {area:'Comercial', status:'Leitura futura', owner:'JonIAta', fact:'Funil deve aparecer por contrato, sinal e Gate 0.', action:'Separar oportunidade de projeto em execução.', tone:''},
+    {area:'Diretoria', status:'Decisão', owner:'Felipe', fact:'Cérebro deve mostrar poucas decisões, impacto e consequência.', action:'Manter decisões preparadas para aceite explícito.', tone:'green'}
   ],
   priorities: [
     {title:'Travar frente principal', desc:'Torelli concentra disciplinas e precisa de coordenação explícita.', tone:'green', label:'Agora'},
