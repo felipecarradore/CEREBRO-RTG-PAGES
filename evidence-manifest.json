@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0-public",
+  "mode": "public_safe_demo_readonly",
+  "total_evidence_records": 0,
+  "by_source": {},
+  "records": [],
+  "rules": [
+    "Sem dados reais no GitHub Pages público.",
+    "Dados reais somente em ambiente restrito/autenticado.",
+    "Ação oficial exige aprovação explícita."
+  ]
+}

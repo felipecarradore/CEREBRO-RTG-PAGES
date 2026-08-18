@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0-public",
+  "mode": "public_safe_demo_readonly",
+  "safety": {
+    "execution": "blocked",
+    "official_system_write": "blocked",
+    "external_message": "blocked"
+  },
+  "decision_cards": [
+    {
+      "id": "public-decision",
+      "title": "Para dados reais, usar ambiente autenticado/restrito",
+      "context": "A página pública não carrega nomes, tarefas ou projetos reais.",
+      "recommendation": "Próximo passo técnico é autenticação antes de qualquer fonte viva.",
+      "risk": "Publicar dado real em GitHub Pages público seria risco operacional.",
+      "status": "prepared",
+      "authorization_required": true,
+      "evidence": []
+    }
+  ],
+  "prepared_actions": [
+    {
+      "id": "public-action",
+      "title": "Preparar autenticação/fonte viva",
+      "preview": "Somente após gate de segurança.",
+      "owner": "RTG/IAn quando acionado",
+      "risk": "alto sem autenticação",
+      "reversibility": "não aplicável",
+      "authorization_required": true,
+      "blocked_operations": [
+        "expor payload real",
+        "editar sistema oficial",
+        "enviar mensagem externa"
+      ],
+      "evidence": []
+    }
+  ],
+  "approval_contract": {
+    "required_for_execution": [
+      "ambiente autenticado",
+      "fonte autorizada",
+      "escopo",
+      "risco aceito"
+    ]
+  }
+}

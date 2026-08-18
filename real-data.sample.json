@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "schema_version": "0.5.0",
+    "product_version": "cerebro-rtg-v0.5",
+    "mode": "public_safe_demo_readonly",
+    "generated_at": "2026-08-18T09:24:20.088434-03:00",
+    "source_status": {
+      "rtgestao_supabase": "ok",
+      "rtgclock_clockify": "ok",
+      "clickup": "not_used",
+      "rtgarquivos_drive": "not_integrated_v05",
+      "base_institucional": "available"
+    },
+    "limitations": [
+      "Publicação pública sem dados reais identificáveis.",
+      "Dados operacionais reais permanecem somente no preview local/API restrita.",
+      "Esta camada demonstra produto, controles e critérios; não serve para cobrança operacional."
+    ]
+  },
+  "executive_summary": {
+    "classification": "Fato",
+    "title": "Cérebro RTG — shell público seguro",
+    "message": "Demonstração pública do Centro de Comando. A versão operacional com dados reais fica restrita/local até existir autenticação protegida.",
+    "confidence": "alta",
+    "evidence": [
+      {
+        "source_id": "daily_facts",
+        "source_label": "Centro de Comando diário",
+        "path_or_url": "/root/rtg/rtggestao-agent/data/cache/centro_comando_daily_facts_latest.json",
+        "generated_at": "2026-08-18T07:50:34.523537-03:00",
+        "quality": "parcial",
+        "classification": "Fato",
+        "limitation": "Fatos de agenda e horas"
+      },
+      {
+        "source_id": "triagem_vencidos",
+        "source_label": "Triagem vencidos RTGestão",
+        "path_or_url": "/root/rtg/rtggestao-agent/data/cache/triagem_vencidos_rtgestao_latest.json",
+        "generated_at": "2026-08-18T07:46:40.249616-03:00",
+        "quality": "parcial",
+        "classification": "Inferência",
+        "limitation": "Classificação automática local"
+      }
+    ]
+  },
+  "source_cards": [
+    {
+      "id": "rtgestao_supabase",
+      "label": "RTGestão / Supabase agenda",
+      "class": "oficial",
+      "quality": "parcial",
+      "status": "ok",
+      "uses": [
+        "organização",
+        "equipe",
+        "agenda do dia",
+        "tarefas abertas",
+        "vencidos registrados"
+      ],
+      "limitations": [
+        "agenda não prova evolução validada",
+        "tarefa vencida aberta não é atraso automático",
+        "schema completo ainda não mapeado"
+      ],
+      "evidence": [
+        {
+          "source_id": "rtgestao_supabase",
+          "source_label": "RTGestão/Supabase",
+          "path_or_url": "[restrito/local]",
+          "generated_at": null,
+          "quality": "parcial",
+          "classification": "Fato",
+          "limitation": "Fonte viva parcial confirmada por cache read-only"
+        }
+      ]
+    },
+    {
+      "id": "rtgclock_clockify",
+      "label": "RTGClock / Clockify legado",
+      "class": "legado técnico",
+      "quality": "parcial",
+      "status": "ok",
+      "uses": [
+        "horas por pessoa",
+        "horas do dia",
+        "horas da semana",
+        "timer em andamento",
+        "tags"
+      ],
+      "limitations": [
+        "horas isoladas não provam produtividade",
+        "vínculo projeto+etapa+disciplina pode ser parcial"
+      ],
+      "evidence": [
+        {
+          "source_id": "rtgclock_clockify",
+          "source_label": "RTGClock/Clockify",
+          "path_or_url": "[restrito/local]",
+          "generated_at": null,
+          "quality": "parcial",
+          "classification": "Fato",
+          "limitation": "Clockify é evidência técnica legada"
+        }
+      ]
+    },
+    {
+      "id": "rtgarquivos_drive",
+      "label": "RTGArquivos / Drive",
+      "class": "oficial documental",
+      "quality": "indisponível",
+      "status": "not_integrated_v05",
+      "uses": [
+        "arquivos esperados",
+        "arquivos encontrados",
+        "revisões",
+        "entregáveis validados"
+      ],
+      "limitations": [
+        "não integrado ao payload v0.5",
+        "arquivo encontrado não é entrega validada"
+      ],
+      "evidence": [
+        {
+          "source_id": "rtgarquivos_drive",
+          "source_label": "RTGArquivos/Drive",
+          "path_or_url": "[restrito/local]",
+          "generated_at": null,
+          "quality": "parcial",
+          "classification": "Inferência",
+          "limitation": "Fonte futura documentada, não conectada"
+        }
+      ]
+    },
+    {
+      "id": "base_institucional",
+      "label": "Base institucional RTG",
+      "class": "documental",
+      "quality": "ok",
+      "status": "available",
+      "uses": [
+        "regras",
+        "processos",
+        "diretrizes",
+        "apontamentos"
+      ],
+      "limitations": [
+        "não é estado operacional vivo"
+      ],
+      "evidence": [
+        {
+          "source_id": "base_institucional",
+          "source_label": "Base RTG",
+          "path_or_url": "[restrito/local]",
+          "generated_at": null,
+          "quality": "ok",
+          "classification": "Fato",
+          "limitation": "Fonte documental local"
+        }
+      ]
+    },
+    {
+      "id": "clickup",
+      "label": "ClickUp",
+      "class": "legado/bloqueado",
+      "quality": "bloqueado",
+      "status": "not_used",
+      "uses": [
+        "histórico quando autorizado"
+      ],
+      "limitations": [
+        "não é fonte operacional viva do RTGestão"
+      ],
+      "evidence": [
+        {
+          "source_id": "clickup",
+          "source_label": "ClickUp",
+          "path_or_url": "[restrito/local]",
+          "generated_at": null,
+          "quality": "bloqueado",
+          "classification": "Fato",
+          "limitation": "Não usado no Centro de Comando vivo"
+        }
+      ]
+    }
+  ],
+  "priorities": [
+    {
+      "id": "public-safe-001",
+      "classification": "Recomendação",
+      "title": "Usar esta página como vitrine segura, não como operação viva",
+      "situation": "GitHub Pages atual é público; portanto dados reais foram removidos.",
+      "action": "Publicar somente shell seguro e manter payload real no ambiente local restrito.",
+      "owner": "RTG",
+      "impact": "Evita vazamento operacional e permite validar experiência visual.",
+      "confidence": "alta",
+      "evidence": []
+    }
+  ],
+  "triage": {
+    "totals": {
+      "overdue_open_tasks": 93,
+      "today_open_tasks": 3,
+      "estimated_overdue_hours": 45.5,
+      "high_severity_count": 26,
+      "cadastral_triage_count": 21,
+      "technical_or_apontamento_probable_count": 24,
+      "cleanup_probable_count": 9
+    },
+    "categories": [
+      {
+        "key": "possível atraso operacional",
+        "count": 26
+      },
+      {
+        "key": "pendência técnica/apontamento provável",
+        "count": 24
+      },
+      {
+        "key": "necessita triagem cadastral",
+        "count": 21
+      },
+      {
+        "key": "vencido recente para reprogramar",
+        "count": 11
+      },
+      {
+        "key": "limpeza histórica provável",
+        "count": 9
+      },
+      {
+        "key": "vencido antigo para validação",
+        "count": 2
+      }
+    ],
+    "top_projects": [],
+    "top_people": [],
+    "top_items": [],
+    "rules_applied": [
+      "atividade com entrega/finalização/conferência sugere possível atraso operacional",
+      "atividade com compatibilização/revisão/verificar/pontos sugere pendência técnica/apontamento provável",
+      "ausência de projeto/etapa/disciplina exige triagem cadastral",
+      "apontamento provável não é atraso automático"
+    ],
+    "evidence": [
+      {
+        "source_id": "triagem_vencidos",
+        "source_label": "Triagem vencidos RTGestão",
+        "path_or_url": "/root/rtg/rtggestao-agent/data/cache/triagem_vencidos_rtgestao_latest.json",
+        "generated_at": "2026-08-18T07:46:40.249616-03:00",
+        "quality": "parcial",
+        "classification": "Inferência",
+        "limitation": "Heurística local read-only"
+      }
+    ]
+  },
+  "capacity": {
+    "people": [],
+    "without_today_task": [],
+    "clockify_entries_week": 9,
+    "running_without_clockify_tag": [],
+    "limitations": [
+      "Horas isoladas não provam produtividade",
+      "Agenda vazia não prova ociosidade sem checar bloqueio, ausência ou falta de cadastro"
+    ],
+    "evidence": [
+      {
+        "source_id": "daily_facts",
+        "source_label": "Centro de Comando diário",
+        "path_or_url": "/root/rtg/rtggestao-agent/data/cache/centro_comando_daily_facts_latest.json",
+        "generated_at": "2026-08-18T07:50:34.523537-03:00",
+        "quality": "parcial",
+        "classification": "Fato",
+        "limitation": "Dados de agenda e Clockify legado"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "public-decision",
+      "title": "Para dados reais, usar ambiente autenticado/restrito",
+      "context": "A página pública não carrega nomes, tarefas ou projetos reais.",
+      "recommendation": "Próximo passo técnico é autenticação antes de qualquer fonte viva.",
+      "risk": "Publicar dado real em GitHub Pages público seria risco operacional.",
+      "status": "prepared",
+      "authorization_required": true,
+      "evidence": []
+    }
+  ],
+  "prepared_actions": [
+    {
+      "id": "public-action",
+      "title": "Preparar autenticação/fonte viva",
+      "preview": "Somente após gate de segurança.",
+      "owner": "RTG/IAn quando acionado",
+      "risk": "alto sem autenticação",
+      "reversibility": "não aplicável",
+      "authorization_required": true,
+      "blocked_operations": [
+        "expor payload real",
+        "editar sistema oficial",
+        "enviar mensagem externa"
+      ],
+      "evidence": []
+    }
+  ]
+}

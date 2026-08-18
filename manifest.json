@@ -1,9 +1,10 @@
 {
-  "name": "cerebro-rtg-sala-comando-v04",
-  "version": "0.4.0",
-  "mode": "local-read-only",
-  "data": "mock-demonstrativo",
-  "publish_status": "not_published",
-  "entrypoint": "index.html",
-  "files": ["index.html", "mock-data.js", "README.md", "manifest.json"]
+  "name": "Cérebro RTG v1 Public Safe",
+  "short_name": "Cérebro RTG",
+  "version": "1.0.0-public-safe",
+  "mode": "public_safe_demo_readonly",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#2d3a52"
 }

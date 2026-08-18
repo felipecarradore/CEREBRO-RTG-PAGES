@@ -1,43 +1,29 @@
-# Deploy plan — cerebro.rtgengenharia.com — v0.4
+# Deploy — Cérebro RTG v1 Public Safe
 
-## Autorização
+Domínio: `cerebro.rtgengenharia.com`
 
-Felipe autorizou avançar com a publicação após o pacote local/read-only estar validado.
+## Escopo publicado
 
-## Pacote
-
-Origem:
-- `/root/rtg/rtggestao-agent/prototypes/cerebro-rtg-sala-comando-v04/`
-
-Dist:
-- `/root/rtg/rtggestao-agent/dist/cerebro-rtg-sala-comando-v04/`
-
-Arquivos publicados:
-- `index.html`
-- `mock-data.js`
-- `README.md`
-- `manifest.json`
-- `CNAME`
-- `DEPLOY_PLAN.md`
+Publicação GitHub Pages **pública e segura**, sem dados reais identificáveis.
 
 ## Guardrails
 
-- Dados mock/demonstrativos.
-- Read-only.
-- Sem conexão com RTGestao, RTGClock, Drive, ClickUp ou fontes oficiais.
-- Não usar para decisão real, aceite de entrega ou cobrança operacional.
-- HTTPS enforcement só deve ser ativado quando o certificado do GitHub Pages estiver válido para `cerebro.rtgengenharia.com`.
+- Não contém payload operacional real.
+- Não contém nomes de projetos, clientes ou pessoas reais.
+- Não conecta RTGestão, RTGClock, Drive, ClickUp ou Supabase.
+- Não executa escrita.
+- Não envia mensagem externa.
+- Operação viva permanece somente em ambiente restrito/local até autenticação protegida.
 
-## Validação pré-publicação
+## Evidência local antes do deploy
 
-- Browser local carregou sem erro JS.
-- Banner read-only visível.
-- Resíduos visuais antigos removidos.
-- ZIP e dist verificados.
-- DNS autoritativo já aponta `cerebro.rtgengenharia.com CNAME felipecarradore.github.io.`
+- Dist: `/root/rtg/rtggestao-agent/dist/cerebro-rtg-sala-comando-v1-public-safe`
+- Browser local validado em `http://127.0.0.1:8781/`
+- Título: `Cérebro RTG — Public Safe v1`
+- DNS já aponta `cerebro.rtgengenharia.com CNAME felipecarradore.github.io`
+- GitHub Pages reportado com certificado HTTPS aprovado.
 
-## Validação pós-publicação esperada
+## Validação pós-deploy esperada
 
-- `gh api repos/felipecarradore/CEREBRO-RTG-PAGES/pages` com `status=built`.
-- `curl http://cerebro.rtgengenharia.com/` contendo título v0.4.
-- `curl https://cerebro.rtgengenharia.com/` somente após certificado válido.
+- `https://cerebro.rtgengenharia.com/` retorna título `Cérebro RTG — Public Safe v1`.
+- A página contém aviso `vitrine sem dados reais`.
