@@ -1,0 +1,39 @@
+name: Configure private Cerebro Access
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure and verify private access
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_ACCESS_API_TOKEN }}
+          CF_ACCOUNT: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        shell: python
+        run: |
+          import os,json,urllib.request
+          root='https://api.cloudflare.com/client/v4/accounts/'+os.environ['CF_ACCOUNT']+'/access/'
+          def api(path,data=None):
+            req=urllib.request.Request(root+path,headers={'Authorization':'Bearer '+os.environ['CF_TOKEN'],'Content-Type':'application/json'},data=json.dumps(data).encode() if data is not None else None)
+            with urllib.request.urlopen(req,timeout=30) as r: result=json.load(r)
+            assert result['success']
+            return result['result']
+          providers=api('identity_providers')
+          otp=next((p for p in providers if p['type']=='onetimepin'),None)
+          if not otp: otp=api('identity_providers',{'name':'RTG Email PIN','type':'onetimepin','config':{}})
+          assert api('identity_providers/'+otp['id'])['type']=='onetimepin'
+          domain='cerebro.rtgengenharia.com'
+          apps=[a for a in api('apps') if a.get('domain')==domain]
+          if apps:
+            raise SystemExit('Application already exists: inspect policies before changing')
+          app=api('apps',{'name':'Cerebro RTG - Felipe privado','domain':domain,'type':'self_hosted','session_duration':'8h','allowed_idps':[otp['id']],'auto_redirect_to_identity':False,'app_launcher_visible':False})
+          policy=api('apps/'+app['id']+'/policies',{'name':'Somente Felipe','decision':'allow','precedence':1,'include':[{'email':{'email':'Felipe@rtgengenharia.com'}}],'exclude':[],'require':[]})
+          actual=api('apps/'+app['id'])
+          policies=api('apps/'+app['id']+'/policies')
+          assert actual['domain']==domain
+          assert len(policies)==1 and policies[0]['decision']=='allow'
+          assert policies[0]['include']==[{'email':{'email':'Felipe@rtgengenharia.com'}}]
+          print('Verified: email PIN provider and exclusive Felipe policy on',domain)
+          print('Operational data not deployed by this workflow')
