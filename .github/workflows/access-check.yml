@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Validate account and Access organization
         env:
+          CF_ACCOUNT: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           CF_TOKEN: ${{ secrets.CLOUDFLARE_ACCESS_API_TOKEN }}
         shell: python
         run: |
@@ -21,11 +22,7 @@ jobs:
             except urllib.error.HTTPError as e:
               print('Cloudflare endpoint',path,'HTTP',e.code)
               raise SystemExit(1)
-          accounts=get('/accounts')
-          if len(accounts)!=1:
-            print('Explicit account selection required; account count:',len(accounts))
-            raise SystemExit(1)
-          a=accounts[0]['id']
+          a=os.environ['CF_ACCOUNT']
           org=get('/accounts/'+a+'/access/organizations')
           print('Access organization configured:', bool(org and org.get('auth_domain')))
           if not org or not org.get('auth_domain'): raise SystemExit(1)
